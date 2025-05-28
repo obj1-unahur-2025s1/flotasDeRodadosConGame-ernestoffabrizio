@@ -1,0 +1,61 @@
+import rodados.*
+
+describe "group of tests for pepita" {
+  const deportes = new Municipalidad(cantidadEmpleados = 45)
+  const cultura = new Municipalidad(cantidadEmpleados = 31)
+  var cachito = new Corsa(color = "rojo")
+  var corsaAzul = new Corsa(color = "azul")
+  var corsaVerde = new Corsa(color = "verde")
+  var unKwid = new Kwid(tieneTanque = true)
+  var unEspecial = new Especial(capacidad = 5 , velocidad = 160 , peso = 1200 , color = "beige")
+  var otroKwid = new Kwid(tieneTanque = false)
+  method initialize(){
+    deportes.agregarAFlota(cachito)
+    deportes.agregarAFlota(corsaAzul)
+    deportes.agregarAFlota(corsaVerde)
+    deportes.agregarAFlota(unKwid)
+    deportes.agregarAFlota(unEspecial)
+    cultura.agregarAFlota(cachito)
+    cultura.agregarAFlota(unKwid)
+    cultura.agregarAFlota(unKwid)
+    traffic.interior(interiorPopular)
+    traffic.motor(motorBataton)
+    cultura.agregarAFlota(traffic)
+  }
+  test "el peso total de deportes es 6450"{
+    assert.equals(6450, deportes.pesoTotalFlota())
+  }
+    test "el peso total de cultura es 9500"{
+    assert.equals(9500, cultura.pesoTotalFlota())
+  }
+  test "deportes no esta bien equipada"{
+    assert.notThat(deportes.estaBienEquipada())
+  }
+    test "cultura no esta bien equipada"{
+    assert.notThat(deportes.estaBienEquipada())
+  }
+  test "la capacidad de municipalidad total en color azul es 7"{
+    assert.equals(7, deportes.capacidadTotalEnColor("azul"))
+  }
+  test "la capacidad de cultura total en colora azul es 6"{
+    assert.equals(6, cultura.capacidadTotalEnColor("azul"))
+  }
+  test "el color del rodado mas rapido en deportes es beige"{
+    assert.equals("beige", deportes.colorDelRodadoMasRapido())
+  }
+  test "el color del rodado mas rapido en cultura es rojo"{
+    assert.equals("rojo", cultura.colorDelRodadoMasRapido())
+  }
+  test "deportes no es grande"{
+    assert.notThat(deportes.esGrande())
+  }
+  test "cultura no es grande"{
+    assert.notThat(cultura.esGrande())
+  }
+  test "la capacidad faltante de deportes es 25"{
+    assert.equals(25, deportes.capacidadFaltante())
+  }
+  test "la capacidad faltante de cultura es 9"{
+    assert.equals(9, cultura.capacidadFaltante())
+  }
+}
